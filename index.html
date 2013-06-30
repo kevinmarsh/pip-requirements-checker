@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Requirements Checker</title>
+    <link rel="stylesheet" href="style.css"></style>
+    <link rel="stylesheet" href="gh-fork-ribbon.css"></style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Requirements Checker</h1>
+    <div class="input">
+        <button>Upload File 1</button>
+        <input type="file" name="imagefile" size="0" style="display:none;" />
+        <textarea id="file1"></textarea>
+    </div>
+    <div class="input">
+        <button>Upload File 2</button>
+        <input type="file" name="imagefile" size="0" style="display:none;" />
+        <textarea id="file2"></textarea>
+    </div>
+    <br>
+    <button type="button" id="compare">Compare Requirements</button>
+
+    <table id="results">
+        <tbody>
+            <tr class="header">
+                <th>Package Name</th>
+                <th>Requirements 1</th>
+                <th>Requirements 2</th>
+                <th>Match</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="github-fork-ribbon-wrapper right">
+        <div class="github-fork-ribbon">
+            <a id="demo" href="#">Run A Demo</a>
+        </div>
+    </div>
+</body>
+</html>

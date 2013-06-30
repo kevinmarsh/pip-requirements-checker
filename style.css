@@ -1,0 +1,56 @@
+body {
+    text-align: center;
+    margin: 12px auto;
+}
+body * {
+    -webkit-transition: all 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+       -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+         -o-transition: all 0.3s ease-out;  /* Opera 10.50–12.00 */
+            transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+}
+.input {
+    display: inline-block;
+    text-align: center;
+}
+.input button {
+    display: block;
+    margin: 0 auto;
+    padding: 2px;
+}
+textarea {
+    text-align: left;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+}
+table {
+    border-collapse: collapse;
+    border-style: hidden;
+    margin: 20px auto;
+}
+
+table td, table th {
+    border: 1px solid black;
+    min-width: 140px;
+}
+table .header {
+    display: none;
+    background-color: transparent;
+}
+.match {
+    text-align: center
+}
+.matchReq .match {
+    background-color: rgb(139, 205, 159);
+    background-color: rgba(50, 350, 95, 0.7);
+}
+.updateReq .match {
+    background-color: rgb(255, 60, 60);
+    background-color: rgba(255, 60, 60, 0.7);
+}
+
+
+/*********************************
+*********************************/
+.github-fork-ribbon { opacity: 0.1; }
+.github-fork-ribbon:hover { opacity: 1; }
