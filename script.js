@@ -5,9 +5,9 @@ function readUpload(reqFile, $textarea){
         var reader = new FileReader();
         reader.onload = function (e) {
             $textarea.html(e.target.result);
-        };//end onload()
+        };  // End onload()
         reader.readAsText(reqFile.files[0]);
-    }//end if html5 filelist support
+    }  // End if html5 filelist support
 }
 function sortKeys(obj) {
     var dictKeys = [];
@@ -18,13 +18,14 @@ function sortKeys(obj) {
     }
     var sortedArray = dictKeys.sort();
     sortedKeys = [];
-    for (k in sortedArray) {
+    for (var k in sortedArray) {
         sortedKeys.push(sortedArray[k]);
     }
     return sortedKeys;
 }
 function demoRequirements() {
     // This populates the textarea and compares them.
+    // TODO: add something to empty the text boxes out
     $('#file1').load('demo/requirements-v1.txt', function() {
         $('#file2').load('demo/requirements-v2.txt', function() {
             compare();
@@ -43,9 +44,11 @@ function compare() {
 
     packageDict = {};
     for (i = 0; i < lines1.length; i++) {
-        if (lines1[i].indexOf('==') < 0 || lines1[i].indexOf('#') > 0) {
+        if (lines1[i].indexOf('#') > 0) {
             continue;
         }
+
+        // Split the package into name and version
         line = lines1[i].split('==');
         packageName = line[0];
         if (line.length == 2){
@@ -58,7 +61,7 @@ function compare() {
         }
     }
     for (i = 0; i < lines2.length; i++) {
-        if (lines2[i].indexOf('==') < 0 || lines2[i].indexOf('#') > 0) {
+        if (lines2[i].indexOf('#') > 0) {
             continue;
         }
         line = lines2[i].split('==');
@@ -68,6 +71,8 @@ function compare() {
         } else {
             version = 'Most Recent';
         }
+
+        // Check that it is a valid package name and whether it is in Req1 already
         if (packageName && packageName in packageDict) {
             packageDict[packageName][1] = version;
         } else if (packageName) {
@@ -76,7 +81,7 @@ function compare() {
     }
 
     sortedKeys = sortKeys(packageDict);
-    for (k in sortedKeys){
+    for (var k in sortedKeys){
         row = $('<tr>');
         match = packageDict[sortedKeys[k]][0] == packageDict[sortedKeys[k]][1];
         if (match) {
@@ -84,10 +89,10 @@ function compare() {
         } else {
             row.addClass('updateReq');
         }
-        $('<td class="packageName">').text(sortedKeys[k]).appendTo(row);  // Package Name
-        $('<td class="version1">').text(packageDict[sortedKeys[k]][0]).appendTo(row); // Requirements 1
-        $('<td class="version2">').text(packageDict[sortedKeys[k]][1]).appendTo(row); // Requirements 2
-        $('<td class="match">').text(match).appendTo(row);  // Match
+        $('<td class="packageName">').text(sortedKeys[k]).appendTo(row);                // Package Name
+        $('<td class="version1">').text(packageDict[sortedKeys[k]][0]).appendTo(row);   // Requirements 1
+        $('<td class="version2">').text(packageDict[sortedKeys[k]][1]).appendTo(row);   // Requirements 2
+        $('<td class="match">').text(match).appendTo(row);                              // Match
 
         row.appendTo($('#results tbody'));
         $('textarea').css('height', 200);
@@ -108,5 +113,7 @@ $(document).ready(function() {
     $('button').click(function() {
         $(this).siblings('input').click();
     });
+
+    // TODO: Check the latest version of each package to see if update needed
     // $('#pipList').load('https://pypi.python.org/pypi?%3Aaction=index .list');
 });
